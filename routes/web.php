@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\Factory;
@@ -10,7 +11,7 @@ Route::get('/', function () {
 });
 
 Route::get(uri: '/about' , action: function(): Factory|View{
-$name ='ansam';
+$name ='wesam';
 
 $departments =[
 '01' =>'Tichnical',
@@ -35,5 +36,23 @@ $departments =[
   return view( view:'about' , data: compact('name'));
 
  //return view( view:'about');
+
+});
+
+Route::get('tasks' , function(){
+
+return view('tasks');
+
+
+});
+
+Route::post(uri: 'create' , action: function(): Factory|View{
+    $task_name=$_POST['name'];
+  DB::table('tasks')->insert(['name' => $task_name]);
+
+
+  return  view( view:'tasks');
+
+
 
 });
