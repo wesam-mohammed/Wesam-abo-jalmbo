@@ -63,4 +63,7 @@ Route::post('user/edit/{id}', [UserController::class, 'edit']);
 
 Route::post('user/update', [UserController::class, 'update']);
 
+Route::get(uri:'app',action: function() :view{
+return view('layouts.app');
 
+});
